@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تعلم اللغة الإنجليزية — تحدّث بثقة</title>
+<meta name="description" content="مواقف يومية حقيقية وتمارين نطق بسيطة لتعلم التحدث بالإنجليزية، بالعربية 100%.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f17; --card:#131a26; --card2:#1a2231;
+  --line:#243044; --text:#e6edf7; --muted:#8b9bb4;
+  --accent:#22d3ee; --accent2:#4f8cff; --radius:16px;
+  --danger:#e53935; --danger-bg:#2a0a0a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:"Tajawal",system-ui,sans-serif;line-height:1.9}
+a{color:var(--accent);text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1100px;margin:0 auto;padding:0 16px}
+button{font-family:inherit;cursor:pointer}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:rgba(11,15,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:17px}
+.logo .dot{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06101f;font-size:16px}
+nav ul{display:flex;gap:14px;list-style:none;font-size:13px;flex-wrap:wrap;align-items:center}
+nav a{color:var(--muted);font-weight:700;padding:6px 0;border-bottom:2px solid transparent}
+nav a:hover,nav a.active{color:var(--text);border-bottom-color:var(--accent)}
+
+/* Settings dropdown */
+.settings-wrap{position:relative}
+.settings-btn{background:var(--card);border:1px solid var(--line);color:var(--text);width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:16px}
+.settings-btn:hover{border-color:var(--accent)}
+.settings-menu{position:absolute;top:46px;left:0;background:var(--card);border:1px solid var(--line);border-radius:12px;min-width:190px;padding:6px;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:60}
+.settings-menu.open{display:block}
+.settings-menu a{display:block;color:var(--text);font-size:13px;font-weight:700;padding:9px 12px;border-radius:8px;border:none}
+.settings-menu a:hover{background:var(--card2);color:var(--accent);border:none}
+
+/* Warning bar */
+.warn-bar{display:none;background:linear-gradient(90deg,#2a0a0a,#3a0d0d);border-bottom:1px solid var(--danger);color:#ffb4ab;font-size:12.5px;font-weight:700;padding:8px 16px;text-align:center;position:relative;z-index:49}
+.warn-bar.show{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.warn-bar button{background:var(--danger);border:none;color:#fff;padding:4px 12px;border-radius:999px;font-size:11.5px;font-weight:800}
+.warn-bar a{color:#ffb4ab;text-decoration:underline}
+
+/* Pages */
+.page{display:none;padding:30px 0 50px}
+.page.active{display:block}
+
+/* Hero */
+.hero{text-align:center;padding:30px 0 10px}
+.hero h1{font-size:clamp(24px,6vw,40px);line-height:1.4;font-weight:800}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:600px;margin:14px auto 0;font-size:15px}
+.hero-buttons{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.btn{padding:12px 24px;border-radius:999px;font-weight:800;font-size:14px;border:none}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06101f}
+.btn-outline{background:transparent;border:1px solid var(--line);color:var(--text)}
+
+/* Sections */
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:34px 0 18px;flex-wrap:wrap}
+.sec-head h2{font-size:20px;font-weight:800}
+.sec-head h2::before{content:"";display:inline-block;width:5px;height:18px;border-radius:3px;background:linear-gradient(var(--accent),var(--accent2));margin-left:8px;vertical-align:-3px}
+
+/* Cards */
+.cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.why-card,.sc-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;transition:.2s}
+.why-card{text-align:center}
+.why-card .ic{font-size:30px;margin-bottom:8px}
+.why-card h3{font-size:15px;margin-bottom:4px}
+.why-card p{font-size:12.5px;color:var(--muted)}
+.sc-card{cursor:pointer}
+.sc-card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.sc-card .thumb{aspect-ratio:16/9;background:var(--card2);border-radius:10px;display:grid;place-items:center;font-size:36px;margin-bottom:12px;overflow:hidden}
+.sc-card .thumb img{width:100%;height:100%;object-fit:cover}
+.sc-card h3{font-size:15px;margin-bottom:4px}
+.sc-card p{font-size:12.5px;color:var(--muted);margin-bottom:8px}
+.badge{display:inline-block;font-size:11px;font-weight:800;padding:3px 10px;border-radius:999px;background:rgba(34,211,238,.15);color:var(--accent)}
+.badge.lvl{background:rgba(79,140,255,.15);color:var(--accent2);margin-right:4px}
+
+/* Filters */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filters button{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:8px 14px;border-radius:999px;font-size:12.5px;font-weight:700}
+.filters button.active{background:var(--accent);border-color:var(--accent);color:#06101f}
+
+/* Scenario detail */
+.back-btn{background:var(--card);border:1px solid var(--line);color:var(--text);padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:18px}
+.sentence{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.sentence .en{font-size:16px;font-weight:700;margin-bottom:4px;direction:ltr;text-align:left;color:var(--accent)}
+.sentence .ar{font-size:14px;color:var(--muted);margin-bottom:10px}
+.sentence .tip{font-size:12px;color:#f5c26b;background:rgba(245,194,107,.08);padding:6px 10px;border-radius:8px;margin-bottom:10px}
+.sentence .actions{display:flex;gap:8px;flex-wrap:wrap}
+.sentence .actions button{background:var(--card2);border:1px solid var(--line);color:var(--text);padding:8px 14px;border-radius:999px;font-size:12.5px;font-weight:700}
+.sentence .actions button:hover{border-color:var(--accent)}
+.recording-note{font-size:12px;color:var(--muted);margin-top:8px}
+
+/* Daily */
+.daily-box{background:linear-gradient(135deg,rgba(34,211,238,.1),rgba(79,140,255,.08));border:1px solid var(--line);border-radius:var(--radius);padding:24px;text-align:center;margin-bottom:20px}
+.daily-box .label{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:1px}
+.daily-box .en{font-size:20px;font-weight:800;direction:ltr;color:var(--accent);margin:10px 0 6px}
+.daily-box .ar{font-size:14px;color:var(--muted);margin-bottom:14px}
+.daily-box audio{width:100%;max-width:320px;margin-top:10px}
+.progress-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center}
+.progress-box .num{font-size:32px;font-weight:800;color:var(--accent)}
+
+/* Panel */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;font-size:14px}
+.panel h3{margin-bottom:10px;font-size:17px}
+.panel p{color:var(--muted);margin-bottom:8px}
+.panel img.avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;margin:0 auto 14px;border:2px solid var(--accent)}
+
+/* Danger block */
+.danger-box{background:var(--danger-bg);border:2px solid var(--danger);border-radius:var(--radius);padding:24px;margin-top:24px;color:#ffd9d6}
+.danger-box h2{color:#ff8a80;font-size:20px;margin-bottom:14px;font-weight:800}
+.danger-box h3{color:#ff8a80;font-size:15px;margin:18px 0 8px;font-weight:800}
+.danger-box ul,.danger-box ol{margin:0 18px 10px;font-size:13.5px;color:#ffd9d6}
+.danger-box li{margin-bottom:6px}
+.danger-box strong{color:#fff}
+.danger-box p{color:#ffd9d6;font-size:13.5px;margin-bottom:8px}
+.danger-box a{color:#ffb4ab;text-decoration:underline}
+.legal-stamp{margin-top:18px;border:2px dashed var(--danger);border-radius:10px;padding:10px 14px;text-align:center;font-size:12px;font-weight:800;color:#ff8a80;letter-spacing:1px}
+
+/* Contact */
+.contact-list{list-style:none}
+.contact-list li{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14px}
+.contact-list li:last-child{border-bottom:none}
+.contact-list .ic{font-size:20px}
+
+.empty{color:var(--muted);text-align:center;padding:24px;font-size:13px}
+footer{border-top:1px solid var(--line);padding:24px 0;text-align:center;color:var(--muted);font-size:12.5px;margin-top:20px}
+footer strong{color:var(--text)}
+footer .legal{font-size:11.5px;color:#8b9bb4;margin-top:8px}
+footer .legal a{color:var(--accent);font-weight:700}
+footer .warn-line{font-size:11px;color:#ff8a80;margin-top:8px;font-weight:700}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo"><span class="dot">🗣️</span> تعلّم الإنجليزية</div>
+    <nav><ul>
+      <li><a href="#home" data-page="home" class="active">الرئيسية</a></li>
+      <li><a href="#scenarios" data-page="scenarios">المواقف</a></li>
+      <li><a href="#daily" data-page="daily">التدريب اليومي</a></li>
+      <li><a href="#about" data-page="about">من نحن</a></li>
+      <li><a href="#contact" data-page="contact">اتصل بنا</a></li>
+      <li class="settings-wrap">
+        <button class="settings-btn" id="settingsBtn" aria-label="الإعدادات">⚙️</button>
+        <div class="settings-menu" id="settingsMenu">
+          <a href="#about" data-page="about">ℹ️ من نحن</a>
+          <a href="#privacy" data-page="privacy">🔒 سياسة الخصوصية</a>
+          <a href="#developer" data-page="developer">👨‍💻 عن المطوّر</a>
+        </div>
+      </li>
+    </ul></nav>
+  </div>
+</header>
+
+<div class="warn-bar" id="warnBar">
+  <span>⛔ هذا الموقع محمي قانونياً. أي نسخ أو اختراق أو استخدام آلي يُعرّض صاحبه للملاحقة القانونية.</span>
+  <a href="#privacy" data-page="privacy">اقرأ السياسة</a>
+  <button id="warnOk">موافق</button>
+</div>
+
+<div class="container">
+
+  <!-- الرئيسية -->
+  <div id="page-home" class="page active">
+    <div class="hero">
+      <h1>تحدّث <em>الإنجليزية</em> بثقة — من أي مكان في العالم العربي</h1>
+      <p>مواقف يومية حقيقية، تمارين نطق بسيطة، ومحتوى عربي 100%. مجاناً وبدون تسجيل.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" onclick="goPage('daily')">ابدأ التدريب الآن</button>
+        <button class="btn btn-outline" onclick="goPage('scenarios')">تصفح المواقف</button>
+      </div>
+    </div>
+    <div class="sec-head"><h2>كيف يعمل الموقع؟</h2></div>
+    <div class="cards">
+      <div class="why-card"><div class="ic">①</div><h3>اختر موقفاً</h3><p>مطار، فندق، مقابلة عمل، أو محادثة يومية.</p></div>
+      <div class="why-card"><div class="ic">②</div><h3>استمع وردّد</h3><p>اسمع الجملة، اقرأها بصوت عالٍ، وكرر.</p></div>
+      <div class="why-card"><div class="ic">③</div><h3>سجّل صوتك</h3><p>استمع لنفسك وقارن مع النطق الأصلي.</p></div>
+    </div>
+    <div class="sec-head"><h2>لماذا نحن؟</h2></div>
+    <div class="cards">
+      <div class="why-card"><div class="ic">🇾🇪</div><h3>عربي 100%</h3><p>واجهة وشرح وترجمة بالعربية لكل جملة.</p></div>
+      <div class="why-card"><div class="ic">💸</div><h3>بدون اشتراك باهظ</h3><p>مجاني، لا حساب، لا بطاقة.</p></div>
+      <div class="why-card"><div class="ic">🎯</div><h3>تركيز على التحدث</h3><p>لا نُثقل عليك بالقواعد — فقط ما تحتاجه لتتحدث.</p></div>
+    </div>
+    <div class="sec-head"><h2>آخر المواقف المضافة</h2></div>
+    <div class="cards" id="homeScenarios"></div>
+    <p style="text-align:center;margin-top:24px;font-size:12px;color:var(--muted)">
+      باستخدامك الموقع فأنت توافق على <a href="#privacy" data-page="privacy">سياسة الخصوصية</a>.
+    </p>
+  </div>
+
+  <!-- المواقف -->
+  <div id="page-scenarios" class="page">
+    <div class="sec-head"><h2>المواقف</h2></div>
+    <div class="filters" id="filters"></div>
+    <div class="cards" id="scenariosGrid"></div>
+    <div class="empty" id="scenariosEmpty" style="display:none">لا توجد مواقف بعد.</div>
+  </div>
+
+  <!-- تفاصيل الموقف -->
+  <div id="page-detail" class="page">
+    <button class="back-btn" onclick="goPage('scenarios')">← رجوع إلى المواقف</button>
+    <h2 id="detailTitle" style="font-size:22px;margin-bottom:6px"></h2>
+    <p id="detailDesc" style="color:var(--muted);font-size:13.5px;margin-bottom:20px"></p>
+    <div id="sentencesList"></div>
+  </div>
+
+  <!-- التدريب اليومي -->
+  <div id="page-daily" class="page">
+    <div class="sec-head"><h2>التدريب اليومي</h2></div>
+    <div class="daily-box">
+      <div class="label">جملة اليوم</div>
+      <div class="en" id="dailyEn">Loading…</div>
+      <div class="ar" id="dailyAr"></div>
+      <button class="btn btn-primary" onclick="speak(document.getElementById('dailyEn').textContent)">🔊 استمع</button>
+    </div>
+    <div class="progress-box">
+      <div class="label" style="font-size:12px;color:var(--muted);font-weight:700">أيام متتالية</div>
+      <div class="num" id="streakNum">0</div>
+      <div style="font-size:12px;color:var(--muted)">عد غداً لتحافظ على سلسلتك</div>
+    </div>
+  </div>
+
+  <!-- من نحن -->
+  <div id="page-about" class="page">
+    <div class="sec-head"><h2>من نحن</h2></div>
+    <div class="panel"><div id="aboutText"></div></div>
+  </div>
+
+  <!-- اتصل بنا -->
+  <div id="page-contact" class="page">
+    <div class="sec-head"><h2>اتصل بنا</h2></div>
+    <div class="panel">
+      <ul class="contact-list" id="contactList"></ul>
+    </div>
+  </div>
+
+  <!-- عن المطوّر -->
+  <div id="page-developer" class="page">
+    <div class="sec-head"><h2>عن المطوّر</h2></div>
+    <div class="panel" id="developerPanel"></div>
+  </div>
+
+  <!-- سياسة الخصوصية -->
+  <div id="page-privacy" class="page">
+    <div class="sec-head"><h2>سياسة الخصوصية</h2></div>
+    <div class="panel">
+      <div id="privacyBody"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer><div class="container">
+  © <span id="year"></span> <strong>تعلّم اللغة الإنجليزية</strong> — جميع الحقوق محفوظة.
+  <div class="legal">
+    <a href="#developer" data-page="developer">عن المطوّر</a> •
+    <a href="#privacy" data-page="privacy">سياسة الخصوصية</a> •
+    <a href="#about" data-page="about">من نحن</a>
+  </div>
+  <div class="warn-line">⛔ أي نسخ أو اختراق أو تلاعب يُعرّض صاحبه للملاحقة القانونية.</div>
+</div></footer>
+
+<script>
+// البيانات مدموجة بالكامل هنا (بدون الحاجة لملف خارجي)
+let DATA = {
+  "site": {
+    "title": "تعلم اللغة الإنجليزية — تحدّث بثقة",
+    "about": "موقع عربي مجاني لتعلم التحدث بالإنجليزية.\n\nنؤمن أن التحدث يحتاج إلى تدريب يومي بسيط، لا إلى حفظ قواعد.\n\nلذلك جمعنا لك مواقف حقيقية من الحياة اليومية، مع النطق والترجمة وتمارين التسجيل.\n\nلا تسجيل، لا اشتراك، لا بطاقة — فقط أنت والإنجليزية.",
+    "contacts": [
+      { "icon": "📧", "label": "البريد",  "value": "allyourqantisvariedqantisdivee@gmail.com", "url": "mailto:allyourqantisvariedqantisdivee@gmail.com" },
+      { "icon": "💬", "label": "تلجرام", "value": "@Tghat3618", "url": "https://t.me/Tghat3618" },
+      { "icon": "📝", "label": "مدونة",  "value": "mdawanati.com", "url": "https://mdawanati.com/ylasma7031xj" }
+    ]
+  },
+  "developer": {
+    "name": "فريق التطوير",
+    "bio": "أهلاً! مطوّر ويب مهتم بتعليم اللغات وتبسيط التقنية للعرب.\n\nبنيتُ هذا الموقع لأن معظم تطبيقات تعلم الإنجليزية إما مدفوعة، أو مليئة بالإعلانات، أو لا تركز فعلياً على التحدث — وهو أهم ما يحتاجه المتعلّم.\n\nلذلك قررت أن أصنع بديلاً عربياً مجانياً وبسيطاً: مواقف حقيقية، نطق واضح، وتمارين تسجيل — بدون تسجيل ولا اشتراك.\n\nالمشروع مفتوح للتطوير — أي ملاحظة أو اقتراح يسعدني.",
+    "links": [
+      { "icon": "📧", "label": "البريد",  "url": "mailto:allyourqantisvariedqantisdivee@gmail.com" },
+      { "icon": "💬", "label": "تلجرام", "url": "https://t.me/Tghat3618" },
+      { "icon": "📝", "label": "مدونة",  "url": "https://mdawanati.com/ylasma7031xj" }
+    ]
+  },
+  "privacy": {
+    "updated": "نوفمبر 2026",
+    "body": "نحن نحترم خصوصيتك. هذه السياسة توضح ما نجمعه (وما لا نجمعه) عند استخدامك الموقع.\n\n**ما لا نجمعه إطلاقاً**\n\n- لا نطلب تسجيل حساب، ولا بريداً، ولا كلمة مرور.\n- لا نستخدم إعلانات ولا أدوات تتبّع (Analytics، Facebook Pixel، إلخ).\n- لا نبيع بياناتك ولا نشاركها مع أي طرف.\n\n**الميكروفون**\n\nعند الضغط على زر \"🎙️ سجّل صوتك\"، يطلب المتصفح إذنك للوصول إلى الميكروفون. التسجيل يبقى على جهازك فقط، ولا يُرفع إلى أي خادم، ويُحذف تلقائياً عند إغلاق الصفحة. يمكنك رفض الإذن — الموقع يعمل كالمعتاد بدون هذه الميزة.\n\n**التخزين المحلي (localStorage)**\n\nنحفظ على جهازك قيمة رقمية واحدة فقط: عدد الأيام المتتالية التي زرت فيها الموقع (السلسلة). لا يحتوي على أي معلومات شخصية، ويمكنك حذفه بمسح بيانات المتصفح.\n\n**النطق الصوتي**\n\nيعتمد على محرك المتصفح المدمج (speechSynthesis) — الجملة تُرسل إلى محرك النظام المحلي، وليس إلى خوادمنا.\n\n**ملفات تعريف الارتباط (Cookies)**\n\nالموقع لا يستخدم أي كوكيز.\n\n**خدمات خارجية**\n\n- Google Fonts: لتحميل خط \"Tajawal\"، يتصل متصفحك بخوادم Google التي قد تسجّل عنوان IP حسب سياستها.\n- لا نستخدم أي خدمات خارجية أخرى.\n\n**الأطفال**\n\nالموقع مناسب لجميع الأعمار ولا يجمع أي بيانات شخصية من أي مستخدم.\n\n**تغييرات على هذه السياسة**\n\nأي تحديث سيُنشر على هذه الصفحة مع تعديل تاريخ \"آخر تحديث\".\n\n**تواصل**\n\nلأي سؤال حول الخصوصية: allyourqantisvariedqantisdivee@gmail.com"
+  },
+  "daily": {
+    "en": "Practice makes perfect.",
+    "ar": "التدريب يؤدي إلى الإتقان."
+  },
+  "scenarios": [
+    {
+      "title": "في المطار — الوصول",
+      "description": "أهم الجمل التي تحتاجها عند وصولك إلى مطار أجنبي.",
+      "category": "مطار",
+      "level": "مبتدئ",
+      "sentences": [
+        { "en": "I'd like to check in, please.", "ar": "أود تسجيل الوصول، من فضلك.", "tip": "لاحظ نطق check in ككلمة واحدة." },
+        { "en": "Here is my passport and ticket.", "ar": "هذا جواز سفري وتذكرتي.", "tip": "passport: الجواز." },
+        { "en": "Where is gate number five?", "ar": "أين البوابة رقم خمسة؟", "tip": "gate: بوابة." },
+        { "en": "I have a connecting flight to London.", "ar": "لدي رحلة متصلة إلى لندن.", "tip": "connecting flight: رحلة متصلة." }
+      ]
+    },
+    {
+      "title": "مقابلة عمل — التقديم",
+      "description": "كيف تقدّم نفسك وتجيب عن أول أسئلة المقابلة.",
+      "category": "مقابلة عمل",
+      "level": "متوسط",
+      "sentences": [
+        { "en": "Good morning, thank you for having me.", "ar": "صباح الخير، شكراً لاستضافتي.", "tip": "have someone: يستقبل شخصاً." },
+        { "en": "I have three years of experience in marketing.", "ar": "لدي ثلاث سنوات خبرة في التسويق.", "tip": "experience in: خبرة في مجال." },
+        { "en": "My strength is problem-solving.", "ar": "نقطة قوتي هي حل المشكلات.", "tip": "problem-solving: حل المشكلات." },
+        { "en": "I'd like to ask about the working hours.", "ar": "أود الاستفسار عن ساعات العمل.", "tip": "I'd like to = I would like to." }
+      ]
+    },
+    {
+      "title": "في المطعم — الطلب",
+      "description": "اطلب طعامك بثقة في أي مطعم أجنبي.",
+      "category": "مطعم",
+      "level": "مبتدئ",
+      "sentences": [
+        { "en": "Could I see the menu, please?", "ar": "هل يمكنني رؤية القائمة، من فضلك؟", "tip": "Could I = صيغة أكثر تهذيباً من Can I." },
+        { "en": "I'll have the grilled chicken.", "ar": "سآخذ الدجاج المشوي.", "tip": "I'll have: سآخذ." },
+        { "en": "Does this contain nuts?", "ar": "هل يحتوي هذا على مكسرات؟", "tip": "contain: يحتوي." },
+        { "en": "The bill, please.", "ar": "الحساب، من فضلك.", "tip": "bill: فاتورة/حساب." }
+      ]
+    },
+    {
+      "title": "محادثة يومية — التعريف بالنفس",
+      "description": "أول لقاء مع شخص جديد: عرّف نفسك بجمل قصيرة.",
+      "category": "محادثة يومية",
+      "level": "مبتدئ",
+      "sentences": [
+        { "en": "Hi, I'm Ahmed. Nice to meet you.", "ar": "مرحباً، أنا أحمد. تشرفت بمعرفتك.", "tip": "Nice to meet you: عبارة ثابتة." },
+        { "en": "I'm from Yemen.", "ar": "أنا من اليمن.", "tip": "I'm from = أنا من." },
+        { "en": "I work in IT.", "ar": "أعمل في تقنية المعلومات.", "tip": "IT: Information Technology." },
+        { "en": "What do you do?", "ar": "ماذا تعمل؟", "tip": "سؤال شائع للتعرف على المهنة." }
+      ]
+    }
+  ]
+};
+
+let activeFilter = "الكل";
+let currentScenarioIndex = -1;
+let mediaRecorder = null, audioChunks = [], activeRecorderIndex = -1;
+
+const esc = s => (s ?? "").toString().replace(/[&<>"']/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function toHTML(text){
+  if(!text) return "";
+  if(/<[a-z][\s\S]*>/i.test(text)) return text;
+  return text.split(/\n{2,}/).map(p => `<p>${esc(p).replace(/\n/g,'<br>')}</p>`).join('');
+}
+
+/* التنقل */
+function goPage(name){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + name);
+  if(el) el.classList.add('active');
+  document.querySelectorAll('nav a, .settings-menu a, footer a[data-page]').forEach(a =>
+    a.classList.toggle('active', a.dataset.page === name));
+  window.scrollTo({top:0, behavior:'smooth'});
+  if(location.hash.slice(1) !== name) location.hash = name;
+  document.getElementById('settingsMenu').classList.remove('open');
+}
+document.addEventListener('click', e => {
+  const link = e.target.closest('[data-page]');
+  if(link){ e.preventDefault(); goPage(link.dataset.page); }
+  if(!e.target.closest('.settings-wrap')) document.getElementById('settingsMenu').classList.remove('open');
+});
+document.getElementById('settingsBtn').addEventListener('click', e => {
+  e.stopPropagation();
+  document.getElementById('settingsMenu').classList.toggle('open');
+});
+window.addEventListener('hashchange', () => {
+  const h = location.hash.replace('#','') || 'home';
+  const ok = ['home','scenarios','daily','about','contact','privacy','developer'];
+  if(ok.includes(h)) goPage(h);
+});
+
+/* شريط التحذير */
+(function(){
+  const bar = document.getElementById('warnBar');
+  if(!sessionStorage.getItem('warnAck')){
+    setTimeout(() => bar.classList.add('show'), 800);
+  }
+  document.getElementById('warnOk').addEventListener('click', () => {
+    bar.classList.remove('show');
+    sessionStorage.setItem('warnAck','1');
+  });
+})();
+
+/* تعبئة البيانات (بدون fetch) */
+function initData(){
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('aboutText').innerHTML = toHTML(DATA.site.about);
+  
+  document.getElementById('contactList').innerHTML = DATA.site.contacts.map(c => `
+    <li><span class="ic">${esc(c.icon)}</span><span>${esc(c.label)}: <a href="${esc(c.url)}">${esc(c.value)}</a></span></li>
+  `).join('');
+
+  // المطور
+  const d = DATA.developer;
+  const links = d.links.map(l => `<li><span class="ic">${esc(l.icon)}</span><span>${esc(l.label)}: <a href="${esc(l.url)}" target="_blank">${esc(l.url)}</a></span></li>`).join('');
+  document.getElementById('developerPanel').innerHTML = `
+    <h3 style="text-align:center;margin-bottom:12px">${esc(d.name)}</h3>
+    <div>${toHTML(d.bio)}</div>
+    <ul class="contact-list" style="margin-top:16px">${links}</ul>
+  `;
+
+  // سياسة الخصوصية
+  const pr = DATA.privacy;
+  const stamp = `<div class="legal-stamp">وثيقة قانونية — تحتفظ الجهة المطوّرة بحقها الكامل</div>`;
+  const danger = `
+    <div class="danger-box">
+      <h2>⛔ تحذير صارم — الاستخدام المحظور والعقوبات</h2>
+      <p><strong>هذا الموقع مُسجَّل ومُوثَّق.</strong> كل دخول إليه، وكل محاولة تلاعب، وكل انتهاك يُعدّ <strong>مخالفة قانونية</strong> تستوجب المساءلة.</p>
+      <h3>يُحظر حظراً قاطعاً:</h3>
+      <ul>
+        <li>محاولة اختراق الموقع أو خوادمه أو استغلال أي ثغرة فيه.</li>
+        <li>استخدام أدوات آلية (Bots / Scrapers / Crawlers) لسحب المحتوى.</li>
+        <li>نسخ أو إعادة نشر المحتوى بأي شكل، تجارياً كان أو غير تجاري، دون إذن كتابي.</li>
+        <li>انتحال هوية المطوّر أو الموقع أو أي جهة مرتبطة به.</li>
+        <li>استخدام اسم الموقع في سياق مضلل أو احتيالي.</li>
+        <li>نشر أي محتوى مسيء أو مخالف للقانون عبر قنوات التواصل.</li>
+      </ul>
+      <h3>⚖️ العقوبات</h3>
+      <p><strong>يُحتفظ بحق اتخاذ كافة الإجراءات القانونية</strong> ضد كل من يثبت مخالفته، بما في ذلك:</p>
+      <ul>
+        <li>إبلاغ فوري لمزوّد الاستضافة لتعليق حساب المخالف.</li>
+        <li>إبلاغ Google لطلب إزالة المحتوى بموجب DMCA.</li>
+        <li>إبلاغ سلطات إنفاذ القانون في بلد المخالف أو في <strong>الجمهورية اليمنية</strong>.</li>
+        <li>رفع دعوى قضائية مدنية للمطالبة بالتعويض.</li>
+        <li>نشر بيانات المخالف الذي يثبت انتهاكه.</li>
+      </ul>
+      <h3>📩 الإبلاغ عن انتهاك</h3>
+      <p>📧 <a href="mailto:allyourqantisvariedqantisdivee@gmail.com">allyourqantisvariedqantisdivee@gmail.com</a><br>
+         💬 تلجرام: <a href="https://t.me/Tghat3618" target="_blank">@Tghat3618</a></p>
+      ${stamp}
+      <p style="margin-top:16px;text-align:center;font-weight:800">باستخدامك هذا الموقع، فأنت تُقرّ بأنك قرأت هذا التحذير ووافقت عليه.</p>
+    </div>`;
+  document.getElementById('privacyBody').innerHTML = `
+    <p style="font-size:12px;color:var(--muted)">آخر تحديث: ${esc(pr.updated)}</p>
+    ${toHTML(pr.body)}
+    ${danger}`;
+
+  // جملة اليوم
+  document.getElementById('dailyEn').textContent = DATA.daily.en;
+  document.getElementById('dailyAr').textContent = DATA.daily.ar;
+
+  // السلسلة
+  const today = new Date().toDateString();
+  const last  = localStorage.getItem('lastVisit');
+  let streak  = parseInt(localStorage.getItem('streak') || '0', 10);
+  if(last !== today){
+    const yesterday = new Date(Date.now() - 86400000).toDateString();
+    streak = (last === yesterday) ? streak + 1 : 1;
+    localStorage.setItem('streak', String(streak));
+    localStorage.setItem('lastVisit', today);
+  }
+  document.getElementById('streakNum').textContent = streak;
+
+  renderFilters();
+  renderScenarios();
+  renderHomeScenarios();
+
+  const hash = location.hash.replace('#','') || 'home';
+  const ok = ['home','scenarios','daily','about','contact','privacy','developer'];
+  if(ok.includes(hash)) goPage(hash);
+}
+
+/* الفلاتر */
+function renderFilters(){
+  const cats = ['الكل', ...new Set(DATA.scenarios.map(s => s.category).filter(Boolean))];
+  document.getElementById('filters').innerHTML = cats.map(c =>
+    `<button class="filter-btn ${c===activeFilter?'active':''}" data-cat="${esc(c)}">${esc(c)}</button>`
+  ).join('');
+}
+document.getElementById('filters').addEventListener('click', e => {
+  const btn = e.target.closest('[data-cat]');
+  if(!btn) return;
+  activeFilter = btn.dataset.cat;
+  renderFilters(); renderScenarios();
+});
+
+/* البطاقات */
+function scenarioCard(s){
+  const idx = DATA.scenarios.indexOf(s);
+  return `
+    <div class="sc-card" data-idx="${idx}">
+      <div class="thumb">${s.cover ? `<img src="${esc(s.cover)}" alt="${esc(s.title)}">` : '💬'}</div>
+      <h3>${esc(s.title)}</h3>
+      <p>${esc(s.description || '')}</p>
+      <span class="badge">${esc(s.category || '')}</span>
+      <span class="badge lvl">${esc(s.level || 'مبتدئ')}</span>
+    </div>`;
+}
+['homeScenarios','scenariosGrid'].forEach(id => {
+  document.getElementById(id).addEventListener('click', e => {
+    const card = e.target.closest('[data-idx]');
+    if(card) openScenario(+card.dataset.idx);
+  });
+});
+function renderScenarios(){
+  const grid = document.getElementById('scenariosGrid');
+  const empty = document.getElementById('scenariosEmpty');
+  const list = DATA.scenarios.filter(s => activeFilter === 'الكل' || s.category === activeFilter);
+  grid.innerHTML = list.map(scenarioCard).join('');
+  empty.style.display = list.length ? 'none' : 'block';
+}
+function renderHomeScenarios(){
+  document.getElementById('homeScenarios').innerHTML = DATA.scenarios.slice(0,3).map(scenarioCard).join('');
+}
+
+/* تفاصيل الموقف */
+function openScenario(idx){
+  const s = DATA.scenarios[idx];
+  if(!s) return;
+  currentScenarioIndex = idx;
+  document.getElementById('detailTitle').textContent = s.title;
+  document.getElementById('detailDesc').textContent  = s.description || '';
+  document.getElementById('sentencesList').innerHTML = (s.sentences || []).map((snt, i) => `
+    <div class="sentence">
+      <div class="en">${esc(snt.en)}</div>
+      <div class="ar">${esc(snt.ar)}</div>
+      ${snt.tip ? `<div class="tip">💡 ${esc(snt.tip)}</div>` : ''}
+      <div class="actions">
+        <button class="btn-speak" data-speak="${esc(snt.en)}">🔊 استمع</button>
+        <button class="btn-rec" data-rec="${i}">🎙️ سجّل صوتك</button>
+      </div>
+      <div class="recording-note" id="rec-note-${i}"></div>
+    </div>`).join('');
+  goPage('detail');
+}
+document.getElementById('sentencesList').addEventListener('click', e => {
+  const sp = e.target.closest('[data-speak]');
+  if(sp){ speak(sp.dataset.speak); return; }
+  const rec = e.target.closest('[data-rec]');
+  if(rec) recordAudio(+rec.dataset.rec, rec);
+});
+
+/* النطق */
+function speak(text){
+  if(!('speechSynthesis' in window)){ alert('متصفحك لا يدعم النطق الآلي.'); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US'; u.rate = 0.9;
+  speechSynthesis.speak(u);
+}
+
+/* التسجيل */
+async function recordAudio(i, btn){
+  if(mediaRecorder && mediaRecorder.state === 'recording' && activeRecorderIndex === i){
+    mediaRecorder.stop(); btn.textContent = '🎙️ سجّل صوتك'; return;
+  }
+  if(mediaRecorder && mediaRecorder.state === 'recording') mediaRecorder.stop();
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+    mediaRecorder = new MediaRecorder(stream);
+    activeRecorderIndex = i; audioChunks = [];
+    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+    mediaRecorder.onstop = () => {
+      const blob = new Blob(audioChunks, { type:'audio/webm' });
+      const url = URL.createObjectURL(blob);
+      document.getElementById('rec-note-' + i).innerHTML =
+        `<audio controls src="${url}" style="max-width:100%;margin-top:8px"></audio>`;
+      stream.getTracks().forEach(t => t.stop());
+    };
+    mediaRecorder.start();
+    btn.textContent = '⏹️ إيقاف التسجيل';
+  }catch(e){
+    alert('تعذر الوصول إلى الميكروفون. تأكد من منح الإذن للموقع.');
+  }
+}
+
+// تشغيل التطبيق
+initData();
+</script>
+</body>
+</html>
